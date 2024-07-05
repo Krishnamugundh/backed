@@ -1,13 +1,13 @@
 import os
-import wfdb
+# import wfdb
 from . import forms
 from . import models
-import pandas as pd
+# import pandas as pd
 from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
