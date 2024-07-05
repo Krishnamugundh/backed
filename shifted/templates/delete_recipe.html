@@ -1,0 +1,16 @@
+{% extends "logo.html" %}
+
+
+{% block content1 %}
+
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Do u want to delete: {{man.recipe_name}} ?</p>
+        <button><a href="{{request.META.HTTP_REFERER}}">Go BACK</a></button>
+        <br><br>
+        <button type="submit">Done</button>
+    </form>
+</div>
+
+{% endblock %}

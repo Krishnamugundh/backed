@@ -1,0 +1,65 @@
+{% extends "logo.html" %}
+
+{% block content1 %}
+
+<H3>Patient Name:   {{patient_one.user}}</H3>
+<ul>
+<li> {{patient_one.gender}} </li>
+<li> {{patient_one.patient_id}} </li>
+<li> {{patient_one.email}} </li>
+<li> {{patient_one.phone_no}} </li>
+</ul>
+
+
+<div>
+    <H5>Here are the list of audio files submitted for: {{request.user}}</H5>
+    {% if audio_info %}
+        <h2>Uploaded Audio Files</h2>
+        <table>
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+                <th>File-Size</th>
+                <th></th>
+                <th></th>
+                <th>Predicted-Condition</th>
+                <th></th>
+                <th></th>
+                <th>Predict Again</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pp_id,audios in audio_info.items %}
+                {% for audio in audios %}
+                    <tr>
+                        <td>{{ audio.audio_name }}</td>
+                        <th></th>
+                        <th></th>
+                        <td>{{ audio.audio_file.size|filesizeformat }}</td>
+                        <th></th>
+                        <th></th>
+                        <td>{{ audio.predicted_condition }}</td>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            {% if audio.predicted_condition %}
+                            <p><a href="{% url 'predict' pp_id audio.audio_id %}">Predict Again</a></p>
+                            {% else %}
+                            <p><a href="{% url 'predict' pp_id audio.audio_id %}">Predict</a></p>
+                            {% endif %}
+                        </th>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No audio files uploaded yet.</p>
+    {% endif %}
+</div>
+
+<br>
+
+{% endblock content1 %}

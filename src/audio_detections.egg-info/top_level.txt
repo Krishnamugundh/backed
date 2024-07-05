@@ -1,0 +1,2 @@
+audio_testing
+pywin32_postinstall

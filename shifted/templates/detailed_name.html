@@ -1,0 +1,16 @@
+{% extends 'logo.html' %}
+
+{% block content1 %}
+<div class="ferry">
+    {% if man.author == req.user %}
+    <a href="{% url 'update_recipe' man.recipe_name %}">Edit or Update</a>
+    <br><br>
+    <a href="{% url 'deleteRec' man.id %}">Delete Recipe</a>
+    {% endif %}
+    <H1>{{man.recipe_name}}</H1>
+    <a>is made by {{man.author}}</a>
+    <p>{{man.desc}}</p>
+    <a>{{man.cuisine}}</a>
+    <H2><a href="{% url 'recipe' %}">BACK</a></H2>
+</div>
+{% endblock content1 %}

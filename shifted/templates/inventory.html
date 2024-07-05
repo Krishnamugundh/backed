@@ -1,0 +1,53 @@
+{% extends 'logo.html' %}
+
+{% block content1 %}
+<style>
+    .holder_01{
+        display:grid;
+        grid-template-columns: 1fr 1.2fr 0.5fr;
+        grid-template-rows: 1fr 1.2fr 0.5fr;
+        grid-gap: 10px;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid rgb(141, 85, 85);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px black;
+        background-color: lightblue;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+        justify-self: center;
+        align-self: center;
+        height: 10vh;
+    }
+</style>
+
+<div>
+    <div class="holder_01">
+        <div>
+            <H3><a href = "{% url 'create' %}">Post Documentation</a></H3>
+        </div>
+        <div>
+            <a href="{% url 'create_patient' %}">
+                <h3>Intrested in Testing for vocal Disorder</h3>
+            </a>
+        </div>
+        <div>
+            <p><a href="{% url 'patient_detail' %}">
+                <h3>Profile Page</h3>
+            </a></p>
+        </div>
+    </div>
+    <div>
+        {% for i in recipes %}
+        <div>
+            <a href = "{% url 'detail' i.recipe_name %}"><H4>{{ i.recipe_name }}</H4></a>
+            <p>  - by {{i.author}}. Its a {{ i.cuisine }} dish. {{i.desc}}</p>
+        </div>
+        <h>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content1 %}

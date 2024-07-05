@@ -1,0 +1,12 @@
+{% extends "logo.html" %}
+
+{% block content1 %}
+<H3>Uploading Audio for : {{pat_01.user}}, age : {{pat_01.age}}</H3>
+<form  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{audio_form.as_p}}
+    <button type="submit">Submit for AUDIO Testing</button>
+</form>
+
+
+{% endblock content1 %}

@@ -1,0 +1,15 @@
+wfdb
+torch
+librosa
+scipy
+scikit-learn
+pandas
+numpy
+requests
+tqdm
+matplotlib
+python-box
+ensure
+pyyaml
+tables
+-e .

@@ -1,0 +1,48 @@
+stages:
+  Data_Download_Pipeline:
+    cmd: python src\audio_testing\pipelines\data_download_pipeline.py
+    deps:
+      - src\audio_testing\pipelines\data_download_pipeline.py
+      - yaml_files\paths_config.yaml
+    outs:
+      - artifacts/zipped
+
+
+  Data_Processing_Pipeline:
+    cmd: python src/audio_testing/pipelines/data_redemption_pipeline.py
+    deps:
+      - src/audio_testing/pipelines/data_redemption_pipeline.py
+      - yaml_files/paths_config.yaml
+      - artifacts/zipped/voice-icar-federico-ii-database-1.0.0
+    outs:
+      - artifacts/redeemed_data/
+    # params:
+    #   - data_path
+    #   - save_df_at
+
+  Data_Reduction_Pipeline:
+    cmd: python src/audio_testing/pipelines/data_reduction_pipeline.py
+    deps:
+     - src/audio_testing/pipelines/data_reduction_pipeline.py
+     - yaml_files/paths_config.yaml
+     - artifacts/redeemed_data/
+    outs:
+     - artifacts/reduced_data/
+  
+  Model_Training:
+    cmd: python src/audio_testing/pipelines/model_training_pipeline.py
+    deps:
+      - src/audio_testing/pipelines/model_training_pipeline.py
+      - yaml_files/paths_config.yaml
+      - artifacts/reduced_data/
+      - yaml_files/params.yaml
+    # params:
+    #   - num_epochs
+    #   - batch_size
+    #   - input_size
+    #   - trainings_size
+    #   - device
+    outs:
+      - artifacts/saved_models/
+
+

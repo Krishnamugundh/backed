@@ -1,0 +1,15 @@
+{% extends "logo.html" %}
+
+
+{% block content1 %}
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{prop.as_p}}
+    <input type="submit" name="create" value="Update Details">
+    <input type="submit" name="same" value="Proceed with OLD Details">
+</form>
+
+
+
+{% endblock content1 %}

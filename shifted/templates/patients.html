@@ -1,0 +1,66 @@
+{% extends "logo.html" %}
+
+{% block content1 %}
+<style>
+    .updates-container{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid rgb(141, 85, 85);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px black;
+        background-color: lightblue;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+        justify-self: center;
+        align-self: center;
+        width: 30vw;
+        height: 5vh;
+        position: absolute;
+        top: 35%;
+        left: 0%;
+    }
+</style>
+
+<div>
+    {% if pat %}
+    <H2>It seems you already been register with us!!!</H2>
+    <H4>What do you prefer to do now?</H4>
+    
+    <div class="updates-container">
+            <div>
+                <a href="{% url 'update_patient' %}">
+                    <h5>Need to UPDATE</h5>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'upload_audio_record' pat.patient_id %}">
+                    <h5>Proceed for AUDIO Testing</h5>
+                </a>
+            </div>
+    </div>
+        
+    {% else %}
+        <H3>Here you can provide ur Personal Data</H3>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{patient_form.as_p}}
+            {% if form_type == "update" %}
+                <input type="submit" name="form1" value="Update Patient Record">
+            {% else %}
+                <input type="submit" name="form1" value="Create Patient Record">
+            {% endif %}
+        </form>
+
+    {% endif %}
+    </div>
+
+
+{% endblock content1 %}

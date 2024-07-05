@@ -1,0 +1,12 @@
+{% extends 'logo.html' %}
+
+{% block content1 %}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{man.as_p}}
+        <input type="submit" value="Post">
+    </form>
+</div>
+
+{% endblock content1 %}

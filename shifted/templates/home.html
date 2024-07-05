@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=10, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('templates/1234.jpeg');
+            background-size: cover; /* This makes sure the image covers the entire background */
+            background-position: center; /* This centers the background image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+        }
+        .menu-container{
+            display: grid;
+            grid-template-columns: 1fr 0.75fr;
+        }
+        .welcome{
+            display: grid;
+            grid-template-columns: 1fr 0.1fr;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="welcome">
+        <div><H2>This is my code</H2> </div>
+        <div>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logging_out' %}"><H3>LOGOUT<H3></a>
+            {% else %}
+                <a href="{% url 'login' %}"><H3>LOGIN<H3></a>
+            {% endif %}
+    </div>
+    <div class="menu-container">
+        <div>
+            <a href="{% url 'home' %}">Click here for the home</a> 
+        </div>
+        <div>
+            <a href="{% url 'recipe' %}">Here is the list of Recipes</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+data_download:
+  data_url: https://github.com/Krishnamugundh/vocal_disease_prediction_app/raw/data/voice-icar-federico-ii-database-1.0.0.zip
+  data_path: artifacts/zipped # careful to change this variable also
+                                # |
+                                # |
+data_redemption:         # --------      
+  data_path: artifacts/zipped/voice-icar-federico-ii-database-1.0.0
+  save_df_at: artifacts/redeemed_data/
+  save_reduced_data: artifacts/reduced_data/
+  save_df_name: final_data
+  save_format: h5
+  df_save_key: reduced_data
+  reduction_size: 10000 # If wanted to change this value, then change the "input_size" value present in model_training inside "params.yaml" file.
+    # Also change "dim_size" inside obtain_output in this file.
+model_saving:
+  save_model: True
+  save_model_at: artifacts/saved_models # If required to change path.
+                    # Also change in model_path inside output_file .
+
+obtain_output:
+  data_file_loc: sample
+  file_name: voice005
+  dim_size: 10000     # reduction_size == dim_size.
+
+output_file:
+  model_path: artifacts/saved_models
+  model_file: Model_no-18-06-2024_13-34-37.pth
+  data_path: 
+  data_file: ID31_hc_0_1_1.wav
+  input_size: 10000
