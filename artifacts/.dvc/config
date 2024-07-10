@@ -1,2 +1,5 @@
 [core]
     autostage = true
+    remote = final_csv
+['remote "final_csv"']
+    url = gdrive://1oIWUWRMe1QKQusLEsF3kUCov8T0LXO3U
