@@ -12,4 +12,6 @@ python-box
 ensure
 pyyaml
 tables
+dvc
+dvc_gdrive
 -e .

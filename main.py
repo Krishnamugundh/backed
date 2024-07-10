@@ -7,29 +7,29 @@ from audio_testing.pipelines.output_pipeline import Output_Pipeline
 
 if __name__ == "__main__":
 
-    pipeline_name_01 = "Data Download Pipeline"
-    try:
-        print(f'{pipeline_name_01:*^100}')
-        """
-        Downloading data from the specified GUTHUB repo.
-        """
-        DataDownloadPipeline.pipeflow()
-    except Exception as e:
-        print(e)
+    # pipeline_name_01 = "Data Download Pipeline"
+    # try:
+    #     print(f'{pipeline_name_01:*^100}')
+    #     """
+    #     Downloading data from the specified GUTHUB repo.
+    #     """
+    #     DataDownloadPipeline.pipeflow()
+    # except Exception as e:
+    #     print(e)
 
 # "********************************************************************************"
 
-    pipeline_name_02 = "Data Redemption Pipeline"
-    try:
-        print(f"{pipeline_name_02:*^100}")
-        """
-        Saving the dataframe for future reference
-        """
+    # pipeline_name_02 = "Data Redemption Pipeline"
+    # try:
+    #     print(f"{pipeline_name_02:*^100}")
+    #     """
+    #     Saving the dataframe for future reference
+    #     """
 
-        Total_training_data = DataRedemptionPipeline.data_in_dataframe()
+    #     Total_training_data = DataRedemptionPipeline.data_in_dataframe()
 
-    except Exception as e:
-        print(e)   
+    # except Exception as e:
+    #     print(e)   
 
 # "************************************************************************************************"
 

@@ -1,0 +1,54 @@
+to store individual files into seperate dvc remotes, follow the steps;
+
+1.) dvc remote add --remote  <remote_name>  <url> --local
+2.) dvc config cache.local  <remote_name>
+3.) dvc add <file_name>
+4.) dvc push --remote  <remote_name>
+
+            OR
+
+1.) dvc remote add --remote <remote_name> <url> 
+2.) dvc add file_1
+3.) dvc add file_2
+4.) dvc push --remote <remote_name> file_1.dvc
+5.) dvc push -r <remote_name> file_2.dvc
+
+    for pulling them;
+6.) dvc pull -r <remote_name> file_1.dvc
+7.) dvc pull --remote <remote_name> file_2.dvc
+
+
+to revert or go-back to the previous version of your commited file.
+
+1.) git checkout HEAD^1 <file_name(.dvc file if its dvc tracked)>
+
+to again come to the last commit;
+
+1.) git checkout -- <file_name(.dvc file if its dvc tracked)>
+
+
+
+
+ERRORS:
+
+1.) 
+ERROR: failed to pull data from the cloud - Checkout failed for following targets:
+Is your cache up to date?
+        OR
+WARNING: Some of the cache files do not exist neither locally nor on remote. Missing cache files:
+
+        Ans:
+            Maybe the file u r trying to fetch doesnt not exists in the specified remote or local cache.
+        Suggestion:
+            Try checking other remote storages in ur dvc repo.
+
+2.) 
+ERROR: DVC file 'final_data.h5.dvc' cannot be an output.
+
+        Ans:
+            if u try to add .dvc file to dvc track.
+        Suggestion:
+            We can add only data file to dvc. and not .dvc file.
+
+3.) 
+WARNING: Some of the cache files do not exist neither locally nor on remote. Missing cache files:
