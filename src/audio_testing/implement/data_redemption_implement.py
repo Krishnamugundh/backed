@@ -36,7 +36,7 @@ class DataRedemption():
         self.save_dir = config_detail.save_df_at
         self.save_name = config_detail.save_df_name
         self.format = config_detail.save_format
-        self.df_save_key = config_detail.df_key
+        self.df_save_key = config_detail.org_key
 
         # If dir not exists, create it
         if not os.path.exists(self.save_dir):

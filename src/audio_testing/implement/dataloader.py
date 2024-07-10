@@ -29,7 +29,7 @@ class MyDataset(Dataset):
 class DataTransformation:
     def __init__(self, configs:DataReductionInfo, params:ModelTrainInfo ):
         self.df_loc = os.path.join(configs.reduced_df,f"{configs.save_df_name}.{configs.save_format}")
-        self.df:pd.DataFrame = pd.read_hdf(self.df_loc,configs.df_key)
+        self.df:pd.DataFrame = pd.read_hdf(self.df_loc,configs.red_key)
         self.train_df = None
         self.val_df = None
         self.test_df = None

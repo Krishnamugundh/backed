@@ -7,9 +7,10 @@ data_redemption:         # --------
   data_path: artifacts/zipped/voice-icar-federico-ii-database-1.0.0
   save_df_at: artifacts/redeemed_data/
   save_reduced_data: artifacts/reduced_data/
-  save_df_name: final_data
+  save_df_name: final_data_001
   save_format: h5
-  df_save_key: reduced_data
+  df_original_key: original_data
+  df_reduced_key: reduced_data
   reduction_size: 10000 # If wanted to change this value, then change the "input_size" value present in model_training inside "params.yaml" file.
     # Also change "dim_size" inside obtain_output in this file.
 model_saving:

@@ -21,7 +21,8 @@ class DataReductionInfo:
     save_df_name:str
     save_format: str
     reduction_size:int
-    df_key:str
+    org_key:str
+    red_key:str
 
 @dataclass
 class ModelTrainInfo:

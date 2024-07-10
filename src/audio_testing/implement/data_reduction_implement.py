@@ -15,9 +15,10 @@ class Dimension_Reduction():
     def __init__(self, configs:DataReductionInfo ):
         self.data_saved_at = f"{configs.save_df_at + configs.save_df_name + '.' +configs.save_format}"
         self.reduced_df_dir = configs.reduced_df
-        self.key = configs.df_key
+        self.org_key = configs.org_key
+        self.red_key = configs.red_key
         self.save_reduced_data = f"{self.reduced_df_dir + configs.save_df_name + '.' +configs.save_format}"
-        self.df:pd.DataFrame = pd.read_hdf(Path(self.data_saved_at),self.key)
+        self.df:pd.DataFrame = pd.read_hdf(Path(self.data_saved_at),self.org_key)
         self.target_length = configs.reduction_size
         
     def __str__(self) -> str:
@@ -88,5 +89,5 @@ class Dimension_Reduction():
             os.makedirs(self.reduced_df_dir)
             print(f"{self.reduced_df_dir} doesn't not exist. Thus creating it.")
         
-        self.df.to_hdf(self.save_reduced_data, key=self.key, mode='w')
+        self.df.to_hdf(self.save_reduced_data, key=self.red_key, mode='w')
         print(f"The Reduced_Signal has been created and saved to {self.save_reduced_data}")

@@ -56,7 +56,8 @@ class Parameters_Configurations:
                 reduced_df = data_redem_path.save_reduced_data,
                 save_df_name = data_redem_path.save_df_name,
                 save_format = data_redem_path.save_format,
-                df_key = data_redem_path.df_save_key,
+                org_key = data_redem_path.df_original_key,
+                red_key = data_redem_path.df_reduced_key,
                 reduction_size = data_redem_path.reduction_size,
         )
 
