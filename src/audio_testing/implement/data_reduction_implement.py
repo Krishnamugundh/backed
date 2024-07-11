@@ -90,4 +90,10 @@ class Dimension_Reduction():
             print(f"{self.reduced_df_dir} doesn't not exist. Thus creating it.")
         
         self.df.to_hdf(self.save_reduced_data, key=self.red_key, mode='w')
+        # os.subprocess(['python'])
         print(f"The Reduced_Signal has been created and saved to {self.save_reduced_data}")
+
+        print("Pushing my data into dvc")
+        os.chdir("artifacts/reduced_data/")
+        os.system("dvc push -v --remote all_artifacts final_data_001.h5.dvc")
+        print("Completed pushing")

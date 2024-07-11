@@ -14,9 +14,9 @@ stages:
     outs:
     - path: artifacts/zipped
       hash: md5
-      md5: f65db491d3b0e66443cc13a6ba249942.dir
-      size: 115409625
-      nfiles: 835
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
   Data_Processing_Pipeline:
     cmd: python src/audio_testing/pipelines/data_redemption_pipeline.py
     deps:
