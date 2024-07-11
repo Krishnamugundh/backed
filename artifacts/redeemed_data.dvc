@@ -1,0 +1,6 @@
+outs:
+- md5: 2e829a3fdae16ed1f34293fbdcd1d493.dir
+  size: 64431768
+  nfiles: 1
+  hash: md5
+  path: redeemed_data

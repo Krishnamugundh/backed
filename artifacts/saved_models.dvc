@@ -1,0 +1,6 @@
+outs:
+- md5: 8f003325c46ceaaf69f86fbc5f4259fd.dir
+  size: 20639298
+  nfiles: 1
+  hash: md5
+  path: saved_models
