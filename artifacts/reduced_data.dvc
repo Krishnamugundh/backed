@@ -1,6 +1,0 @@
-outs:
-- md5: 82e332d5978adf5dcecf5ee866047709.dir
-  size: 81079048
-  nfiles: 1
-  hash: md5
-  path: reduced_data
