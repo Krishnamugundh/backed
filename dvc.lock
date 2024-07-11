@@ -44,17 +44,13 @@ stages:
     deps:
     - path: artifacts/redeemed_data/
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 2e829a3fdae16ed1f34293fbdcd1d493.dir
+      size: 64431768
+      nfiles: 1
     - path: src/audio_testing/pipelines/data_reduction_pipeline.py
       hash: md5
       md5: e51f67516098c77750ec17b7de111d90
       size: 645
-    - path: yaml_files/params.yaml
-      hash: md5
-      md5: a0a2bbf9f2328a4db744fe952e68c9b4
-      size: 240
     - path: yaml_files/paths_config.yaml
       hash: md5
       md5: 9a02eba041e9be6336f13356aa012734
@@ -62,17 +58,17 @@ stages:
     outs:
     - path: artifacts/reduced_data/
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 82e332d5978adf5dcecf5ee866047709.dir
+      size: 81079048
+      nfiles: 1
   Model_Training:
     cmd: python src/audio_testing/pipelines/model_training_pipeline.py
     deps:
     - path: artifacts/reduced_data/
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 82e332d5978adf5dcecf5ee866047709.dir
+      size: 81079048
+      nfiles: 1
     - path: src/audio_testing/pipelines/model_training_pipeline.py
       hash: md5
       md5: f634be0ab3a21591ffcaf0652bbb0845
@@ -88,6 +84,6 @@ stages:
     outs:
     - path: artifacts/saved_models/
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 8f003325c46ceaaf69f86fbc5f4259fd.dir
+      size: 20639298
+      nfiles: 1
