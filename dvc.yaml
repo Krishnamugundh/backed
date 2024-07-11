@@ -1,40 +1,41 @@
 stages:
-  Data_Download_Pipeline:
-    cmd: python src\audio_testing\pipelines\data_download_pipeline.py
-    deps:
-      - src\audio_testing\pipelines\data_download_pipeline.py
-      - yaml_files\paths_config.yaml
-    outs:
-      - artifacts/zipped
+  # Data_Download_Pipeline:
+  #   cmd: python src\audio_testing\pipelines\data_download_pipeline.py
+  #   deps:
+  #     - src\audio_testing\pipelines\data_download_pipeline.py
+  #     - yaml_files\paths_config.yaml
+  #   outs:
+  #     - artifacts/zipped
 
 
   Data_Processing_Pipeline:
-    cmd: python src/audio_testing/pipelines/data_redemption_pipeline.py
+    # cmd: python src/audio_testing/pipelines/data_redemption_pipeline.py
+    cmd: dir
     deps:
-      - src/audio_testing/pipelines/data_redemption_pipeline.py
+      # - src/audio_testing/pipelines/data_redemption_pipeline.py
       - yaml_files/paths_config.yaml
-      - artifacts/zipped/voice-icar-federico-ii-database-1.0.0
+      # - artifacts/zipped/voice-icar-federico-ii-database-1.0.0
     outs:
-      - artifacts/redeemed_data/
-    params:
-      - data_path
-      - save_df_at
+      - artifacts/redeemed_data/final_data_001.h5
+    # params:
+    #   - data_path
+    #   - save_df_at
 
   Data_Reduction_Pipeline:
     cmd: python src/audio_testing/pipelines/data_reduction_pipeline.py
     deps:
      - src/audio_testing/pipelines/data_reduction_pipeline.py
      - yaml_files/paths_config.yaml
-     - artifacts/redeemed_data/
+     - artifacts/redeemed_data/final_data_001.h5
     outs:
-     - artifacts/reduced_data/
+     - artifacts/reduced_data/final_data_001.h5
   
   Model_Training:
     cmd: python src/audio_testing/pipelines/model_training_pipeline.py
     deps:
       - src/audio_testing/pipelines/model_training_pipeline.py
       - yaml_files/paths_config.yaml
-      - artifacts/reduced_data/
+      - artifacts/reduced_data/final_data_001.h5
       - yaml_files/params.yaml
     # params:
     #   - num_epochs
