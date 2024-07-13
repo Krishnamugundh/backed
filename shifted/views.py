@@ -208,9 +208,9 @@ def prediction(request,pp_ids,audio_id):
     pp_data = models.PatientProperty.objects.get(pp_id=pp_ids)
 
     
-    script_path = os.path.join(settings.BASE_DIR, 'main.py')
+    # script_path = os.path.join(settings.BASE_DIR, 'main.py')
     
-    os.system(f'python {script_path}')
+    # os.system(f'python {script_path}')
 
 
-    return HttpResponse(f'Hello world!!!!{pp_ids},{audio_id}')
+    return HttpResponse(f'Hello world!!!!{pp_ids},{audio_id}\n {settings.BASE_DIR}')
