@@ -209,7 +209,6 @@ def prediction(request,pp_ids,audio_id):
 
     
     # script_path = os.path.join(settings.BASE_DIR, 'main.py')
-    
     # os.system(f'python {script_path}')
 
 
