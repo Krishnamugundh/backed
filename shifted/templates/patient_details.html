@@ -2,6 +2,8 @@
 
 {% block content1 %}
 
+{% load get_values %}
+
 <H3>Patient Name:   {{patient_one.user}}</H3>
 <ul>
 <li> {{patient_one.gender}} </li>
@@ -40,15 +42,17 @@
                         <td>{{ audio.audio_file.size|filesizeformat }}</td>
                         <th></th>
                         <th></th>
-                        <td>{{ audio.predicted_condition }}</td>
+                        <td>{{ dict|dict_value:audio.predicted_condition}}</td>
                         <th></th>
                         <th></th>
                         <th>
-                            {% if audio.predicted_condition %}
-                            <p><a href="{% url 'predict' pp_id audio.audio_id %}">Predict Again</a></p>
-                            {% else %}
-                            <p><a href="{% url 'predict' pp_id audio.audio_id %}">Predict</a></p>
-                            {% endif %}
+                            <p><a href="{% url 'predict' pp_id audio.audio_id %}">
+                                {% if audio.predicted_condition is not None %}
+                                    Predict Again
+                                {% else %}
+                                    Predict
+                                {% endif %}
+                            </a></p>
                         </th>
                     </tr>
                 {% endfor %}

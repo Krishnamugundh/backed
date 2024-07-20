@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect,get_object_or_404
+from audio_testing.pipelines.output_pipeline import  Output_Pipeline
 
 def home(request):
     # context = models.recipeName.Desc(id=x)
@@ -189,27 +190,47 @@ def audio_in(request, ids):
 
 
 
+
 @login_required(login_url="login")
 def patient_detail(request):
     patient = get_object_or_404(models.PatientDetail, user=request.user)
     pp = models.PatientProperty.objects.filter(patient = patient)
     # Contains all the audio files submitted by the user.....
     audio_info:dict = {}
+    # Contains details of the diseases.
+    disease_dict = {
+        0: 'got hyperkinetic dysphonia',
+        1: 'are healthy',
+        2: 'got hypokinetic dysphonia',
+        3: 'got reflux laryngitis',
+    }
+
     for i in pp:
         individual = models.AudioData.objects.filter(pp=i)
         audio_info[i.pp_id] = individual
     
     # print(audio_info)
-    return render(request, 'patient_details.html', {'patient_one': patient, "audio_info": audio_info})
+    return render(request, 'patient_details.html', {'patient_one': patient, "audio_info": audio_info, "dict":disease_dict})
 
 
-def prediction(request,pp_ids,audio_id):
-    audio_data = models.AudioData.objects.get(audio_id=audio_id)
-    pp_data = models.PatientProperty.objects.get(pp_id=pp_ids)
 
-    
-    # script_path = os.path.join(settings.BASE_DIR, 'main.py')
-    # os.system(f'python {script_path}')
+def prediction(request, pp_ids, audio_id):
+    data_path = os.path.join(settings.BASE_DIR, 'audio_files')
+    object1 = Output_Pipeline("follow", data_path, str(audio_id))
 
+    disease_dict = {
+        0: 'got hyperkinetic dysphonia',
+        1: 'are healthy',
+        2: 'got hypokinetic dysphonia',
+        3: 'got reflux laryngitis',
+    }
 
-    return HttpResponse(f'Hello world!!!!{pp_ids},{audio_id}\n {settings.BASE_DIR}')
+    prediction_result = int(object1.main()[0])
+    disease = disease_dict.get(prediction_result, 'Unknown Disease')
+
+    audio_detail = get_object_or_404(models.AudioData, audio_id=audio_id)
+    audio_detail.predicted_condition = prediction_result
+    audio_detail.save()
+
+    return HttpResponse(f'Hello {request.user}, You {disease:*^26}')
+
